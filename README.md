@@ -1,0 +1,1 @@
+This repository contains a proof-of-concept for using C++ entirely on the STM32G0XX MCU family.
