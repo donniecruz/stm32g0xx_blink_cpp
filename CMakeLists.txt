@@ -11,7 +11,6 @@ set_property( GLOBAL PROPERTY USE_FOLDERS ON )
 
 # Generate the compile commands
 set( CMAKE_EXPORT_COMPILE_COMMANDS ON )
-set( COMPILE_COMMANDS_PATH ${CMAKE_BINARY_DIR}/build/cmake )
 
 # Set the project description
 project(
@@ -37,5 +36,20 @@ target_sources( ${MAIN_TARGET} PUBLIC
         # Main File
         ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/startup_stm32g071.cpp
+)
+
+# Compile Options for the MAIN_TARGET
+target_compile_options( ${MAIN_TARGET} PUBLIC
+        ${CM0_PLUS_OPTIONS}
+        ${PROJECT_COMPILE_OPTIONS}
+        ${PROJECT_COMPILE_WARNINGS}
+)
+
+# Linker Options for the MAIN_TARGET
+target_link_options( ${MAIN_TARGET} PUBLIC
+        ${CM0_PLUS_OPTIONS}
+        ${PROJECT_LINKER_OPTIONS}
+        -Wl,-T${CMAKE_CURRENT_SOURCE_DIR}/stm32g071.ld
+        -Wl,-Map=${MAIN_TARGET}.map
 )
 
