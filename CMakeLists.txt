@@ -21,6 +21,11 @@ project(
         LANGUAGES CXX
 )
 
+# Set the C++ standard that will be used
+set( CMAKE_CXX_STANDARD                 20  )
+set( CMAKE_CXX_STANDARD_REQUIRED        ON  )
+set( CMAKE_CXX_EXTENSIONS               OFF )
+
 # Set the target variable for the project
 set( MAIN_TARGET stm32g0xx_blink )
 
