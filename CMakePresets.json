@@ -1,0 +1,27 @@
+{
+    "version": 3,
+    "configurePresets": [
+      {
+        "name": "arm-none-eabi",
+        "generator": "Unix Makefiles",
+        "binaryDir": "${sourceDir}/build",
+        "cacheVariables": {
+            "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/arm-none-eabi-toolchain.cmake"
+        }
+      },
+      {
+        "name": "blink_cpp_debug",
+        "inherits": ["arm-none-eabi"],
+        "cacheVariables": {
+            "CMAKE_BUILD_TYPE": "Debug"
+        }
+      }
+    ],
+    "buildPresets": [
+      {
+        "name": "blink_cpp",
+        "configurePreset": "blink_cpp_debug"
+      }
+    ]
+  }
+  
