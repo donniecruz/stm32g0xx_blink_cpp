@@ -9,6 +9,7 @@
 */
 #include <cstdint>
 #include <algorithm>
+#include <stm32g071xx.hpp>
 
 /*
 *   Extern Variables from the Linker Script
@@ -23,7 +24,6 @@ extern uint32_t _ebss;
 /*
 *   Extern main() Function
 */
-extern int main( void );
 
 /*
 *   Private Function Declaration
@@ -32,6 +32,7 @@ extern "C"
 {
     [[noreturn]] void Reset_Handler( void );
     void Default_Handler( void );
+    extern int main( void );
 }
 
 /*
@@ -80,7 +81,7 @@ void CEC_IRQHandler                     ( void ) __attribute__( ( weak, alias( "
 */
 uint32_t vectors[] __attribute__( ( section( ".isr_vector" ) ) ) =
 {
-    ( uint32_t ) _estack,
+    0x20009000,
     ( uint32_t ) Reset_Handler,
     ( uint32_t ) NMI_Handler,
     ( uint32_t ) HardFault_Handler,
@@ -147,6 +148,10 @@ uint32_t vectors[] __attribute__( ( section( ".isr_vector" ) ) ) =
 
     // Initialize the BSS  to zero
     std::fill( &_sbss, &_ebss, 0 );
+
+    auto &SCB { *reinterpret_cast<stm32g071_regs::scb_register*>(ScsMemoryMap::ScbBase) };
+
+    SCB.VTOR = 0x08000000U;
 
     // Call the main function
     main();
