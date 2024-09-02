@@ -8,18 +8,18 @@ int main()
 
     while( 1 )
     {
-        RCC->APBENR2 = RCC->APBENR2 | 0x01;
-        RCC->APBENR1 = RCC->APBENR1 | ( 1 << 28 );
-        RCC->IOPENR = RCC->IOPENR | 0x01;
+        RCC->APBENR2 = 0x01;
+        RCC->APBENR1 = ( 1 << 28 );
+        RCC->IOPENR = 0x01;
 
         // Reset the mode register
-        GPIOA->MODER = GPIOA->MODER & ( 3 << 10 );
+        GPIOA->MODER = ~( 3 << 10 );
 
         // Set Port A/Pin 5 to General Purpose Output Mode
-        GPIOA->MODER = GPIOA->MODER | ( 1 << 10 );
+        GPIOA->MODER = ( 1 << 10 );
 
         // Turn on Port A/Pin 5
-        GPIOA->ODR = GPIOA->ODR | ( 0 << 5 );
+        GPIOA->ODR = ( 1 << 5 );
         // Do Nothing for now
     }
     return 0;
