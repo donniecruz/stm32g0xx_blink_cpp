@@ -55,7 +55,6 @@ enum class AhbPeriphAddr : std::uint32_t
     Exti        = memory_at( PeriphMemoryMap::AhbPeriphBase, 0x1800U ),
     FlashR      = memory_at( PeriphMemoryMap::AhbPeriphBase, 0x2000U ),
     Crc         = memory_at( PeriphMemoryMap::AhbPeriphBase, 0x3000U ),
-    Timer       = static_cast<std::uint32_t>(PeriphMemoryMap::ApbPeriphBase) + 0x4000U,
 };
 
 /*!
