@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "projectName": "stm32g071_blink",
+    "configurations": [
+        {
+            "cwd": "${workspaceFolder}",
+            "executable": "./build/stm32g0xx_blink.elf",
+            "name": "Debug with JLink",
+            "request": "launch",
+            "type": "cortex-debug",
+            "device": "STM32G071RB",
+            "armToolchainPath": "/usr/bin/",
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "raw",
+            "servertype": "jlink"
+        }
+    ]
+}
