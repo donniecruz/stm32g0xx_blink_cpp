@@ -25,6 +25,8 @@ set( CMAKE_CXX_STANDARD                 20  )
 set( CMAKE_CXX_STANDARD_REQUIRED        ON  )
 set( CMAKE_CXX_EXTENSIONS               OFF )
 
+set( CMAKE_EXECUTABLE_SUFFIX .elf )
+
 # Set the target variable for the project
 set( MAIN_TARGET stm32g0xx_blink )
 
@@ -36,6 +38,11 @@ target_sources( ${MAIN_TARGET} PUBLIC
         # Main File
         ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/startup_stm32g071.cpp
+)
+
+# Add the include directories
+target_include_directories( ${MAIN_TARGET} PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/inc
 )
 
 # Compile Options for the MAIN_TARGET
