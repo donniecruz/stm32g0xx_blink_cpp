@@ -27,7 +27,7 @@ namespace STM32G071XX
         IO_PORT_Base    = 0x50000000U       //!< Starting address for the I/O Port Peripherals
     };
 
-    /*! @brief  STM32G071XX GPIO Ports
+    /*! @brief  STM32G071XX GPIO Ports Peripheral Address
     *   @enum   GpioPeriphAddress
     */
     enum class GpioPeriphAddr : std::uint32_t
